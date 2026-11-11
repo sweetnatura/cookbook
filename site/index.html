@@ -31,7 +31,7 @@ html,body{margin:0;background:var(--cream);color:var(--ink)}
 body{font-family:var(--body);font-size:15px;line-height:1.6;font-weight:400;background:var(--cream);min-height:100vh}
 a{color:var(--raspberry)}
 :focus-visible{outline:2px solid var(--raspberry);outline-offset:2px;border-radius:6px}
-.wrap{max-width:1120px;margin:0 auto;padding-inline:var(--gutter) max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1240px;margin:0 auto;padding-inline:var(--gutter) max(16px,env(safe-area-inset-right,0px))}
 .proto{background:#3f0a0e;color:var(--cream);font-size:11.5px;letter-spacing:.04em;text-align:center;padding:6px 16px}
 
 /* brand bar */
@@ -53,11 +53,11 @@ h1 em{font-style:italic;font-weight:600;color:var(--raspberry)}
 .welcome{color:var(--muted);margin:0;max-width:56ch}
 
 /* about Angye */
-.angye{display:grid;grid-template-columns:96px 1fr;gap:16px;align-items:center;background:var(--white);border:1px solid var(--line);border-radius:20px;padding:14px;margin-top:14px;max-width:640px}
-.angye img{width:96px;height:96px;border-radius:50%;object-fit:cover;object-position:50% 20%;border:3px solid var(--gold)}
-.angye b{font-family:var(--display);color:var(--wine);font-size:20px}
-.angye p{margin:2px 0 0;font-size:13.5px;color:var(--muted)}
-@media (min-width:720px){.angye{grid-template-columns:120px 1fr;padding:18px}.angye img{width:120px;height:120px}}
+.angye{display:grid;grid-template-columns:110px 1fr;gap:16px;align-items:center;background:var(--white);border:1px solid var(--line);border-radius:22px;padding:14px;margin-top:16px;max-width:720px}
+.angye img{width:110px;height:126px;border-radius:16px;object-fit:cover;object-position:50% 0;background:var(--cream)}
+.angye b{font-family:var(--display);color:var(--wine);font-size:21px}
+.angye p{margin:4px 0 0;font-size:13.5px;color:var(--muted)}
+@media (min-width:720px){.angye{grid-template-columns:170px 1fr;gap:24px;padding:18px 24px 18px 18px}.angye img{width:170px;height:196px}.angye b{font-size:26px}.angye p{font-size:15px}}
 
 /* search + chips */
 .search{position:sticky;top:0;z-index:5;padding-block:12px 10px;background:linear-gradient(var(--cream) 82%,rgba(244,232,216,0))}
@@ -148,11 +148,13 @@ ul.chk,ol.chk{list-style:none;margin:0;padding:0}
   .mast{padding-block:44px 10px}
   .rail{overflow:visible;display:grid;grid-template-columns:repeat(3,1fr)}
   .mini{max-width:none}
-  .list{grid-template-columns:repeat(2,1fr);gap:18px}
+  .list{grid-template-columns:repeat(2,1fr);gap:22px}
 }
 /* desktop */
 @media (min-width:1040px){
-  .list{grid-template-columns:repeat(3,1fr)}
+  .list{grid-template-columns:repeat(4,1fr);gap:28px}
+  section{margin-top:34px}
+  .sh{margin-bottom:18px}
   .card{grid-template-columns:1fr;grid-template-rows:auto 1fr;gap:0}
   .card .ph{aspect-ratio:9/8;height:auto;min-height:0}
   .card .cb{padding:14px 16px 16px}
