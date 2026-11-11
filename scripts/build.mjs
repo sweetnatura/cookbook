@@ -103,11 +103,13 @@ for (const page of await rows()) {
     desc: text(p["Description"]), facts, ingredients, steps,
     tip: text(p["Angye's tips"]) || null, source: text(p["Source"]),
     featured: !!p["Featured"]?.checkbox,
+    shop: lines(text(p["Shop links"])).map((l) => l.split("|").map((x) => x.trim())).filter((x) => x.length >= 3 && /^https:\/\//.test(x[2])).map(([match, label, url]) => ({ match, label, url })),
   });
   if (status === "Aprobada") toPublish.push({ id: page.id, added: p["Added to cookbook"]?.date?.start ? null : today });
 }
 
 await copyFile("site/index.html", `${OUT}/index.html`);
+for (const f of ["logo.png", "favicon.png"]) await copyFile(`site/${f}`, `${OUT}/${f}`).catch(() => warnings.push(`Missing site/${f}`));
 await writeFile(`${OUT}/recipes.json`, JSON.stringify({ config: { preview: PREVIEW, built: new Date().toISOString() }, recipes }, null, 1));
 await writeFile(`${OUT}/.nojekyll`, "");
 

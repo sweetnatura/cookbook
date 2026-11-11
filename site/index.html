@@ -1,43 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>The Sweet Natura Cookbook</title>
-<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Free, easy, high-protein dessert and breakfast recipes from Angye at Sweet Natura.">
+<meta name="theme-color" content="#671218">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="logo.png">
+<meta property="og:title" content="The Sweet Natura Cookbook">
+<meta property="og:description" content="Free, easy, high-protein recipes from Angye at Sweet Natura.">
+<meta property="og:image" content="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,600&family=Poppins:wght@300;400;500;600&display=swap">
 <style>
-/* Layout: one narrow mobile column on a cream grid; list view and recipe view swap via #hash */
+/* Layout: phone = one column; tablet = 2-column cards; desktop = 3-column cards and a 2-column recipe page. List and recipe views swap via #hash. */
 :root{
-  --cream:#F4E8D8; --cream-2:#FBF5EC; --line:#E4D3BE;
+  --cream:#F4E8D8; --cream-2:#FBF5EC; --line:#E4D3BE; --gold:#C9A15B;
   --raspberry:#A40228; --wine:#671218; --orange:#BD5516; --ink:#111111; --white:#FFFFFF;
   --muted:#6b4a44;
   --display:"Fraunces", Georgia, "Times New Roman", serif;
   --body:"Poppins", "Helvetica Neue", Arial, sans-serif;
+  --gutter:max(16px,env(safe-area-inset-left,0px));
   color-scheme: light;
 }
 *{box-sizing:border-box}
-html,body{background:var(--cream);color:var(--ink)}
-body{
-  font-family:var(--body); font-size:15px; line-height:1.6; font-weight:400;
-  background-color:var(--cream);
-  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
-  background-size:60px 60px; background-position:-1px -1px;
-}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--wine)}
-.wrap{max-width:560px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 40px}
-.proto{background:var(--wine);color:var(--cream);font-size:11.5px;letter-spacing:.04em;text-align:center;padding-block:7px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+html{-webkit-text-size-adjust:100%}
+html,body{margin:0;background:var(--cream);color:var(--ink)}
+body{font-family:var(--body);font-size:15px;line-height:1.6;font-weight:400;background:var(--cream);min-height:100vh}
 a{color:var(--raspberry)}
 :focus-visible{outline:2px solid var(--raspberry);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:var(--gutter) max(16px,env(safe-area-inset-right,0px))}
+.proto{background:#3f0a0e;color:var(--cream);font-size:11.5px;letter-spacing:.04em;text-align:center;padding:6px 16px}
+
+/* brand bar */
+.bar{background:var(--wine);color:var(--cream);padding-top:env(safe-area-inset-top,0px)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:64px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--cream);text-decoration:none;min-width:0}
+.brand img{width:44px;height:44px;border-radius:50%;flex:none;display:block}
+.brand span{font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:.01em;white-space:nowrap}
+.social{display:flex;gap:6px;flex:none}
+.social a{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:var(--cream);border:1px solid rgba(244,232,216,.35);transition:background .15s}
+.social a:hover{background:rgba(244,232,216,.14)}
+.social svg{width:19px;height:19px}
 
 /* masthead */
-.mast{padding-block:28px 6px;display:grid;gap:10px}
-.seal{width:46px;height:46px;border-radius:50%;background:var(--wine);color:var(--cream);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:16px;border:2px solid #C9A15B}
+.mast{padding-block:30px 8px;display:grid;gap:10px}
 .kicker{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);font-weight:600}
-h1{font-family:var(--display);font-weight:800;color:var(--wine);font-size:clamp(34px,10vw,46px);line-height:1.02;margin:0;text-wrap:balance}
+h1{font-family:var(--display);font-weight:800;color:var(--wine);font-size:clamp(34px,7vw,56px);line-height:1.02;margin:0;text-wrap:balance}
 h1 em{font-style:italic;font-weight:600;color:var(--raspberry)}
-.welcome{color:var(--muted);margin:0;max-width:44ch}
+.welcome{color:var(--muted);margin:0;max-width:56ch}
 
 /* search + chips */
-.search{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;padding-block:12px 10px;background:linear-gradient(var(--cream) 80%,transparent)}
-.field{display:flex;align-items:center;gap:8px;background:var(--white);border:1.5px solid var(--line);border-radius:999px;padding:0 16px;height:46px}
+.search{position:sticky;top:0;z-index:5;padding-block:12px 10px;background:linear-gradient(var(--cream) 82%,rgba(244,232,216,0))}
+.searchrow{display:grid;gap:4px}
+.field{display:flex;align-items:center;gap:8px;background:var(--white);border:1.5px solid var(--line);border-radius:999px;padding:0 16px;height:46px;max-width:560px}
 .field:focus-within{border-color:var(--raspberry)}
 .field input{flex:1;min-width:0;border:0;outline:0;background:transparent;font:inherit;color:var(--ink)}
 .chips{display:flex;gap:8px;overflow-x:auto;padding-block:10px 2px;scrollbar-width:none}
@@ -51,10 +69,10 @@ h2{font-family:var(--display);font-weight:800;color:var(--wine);font-size:22px;m
 h2 em{font-weight:600;font-style:italic;color:var(--raspberry)}
 .count{font-size:12px;color:var(--muted)}
 
-/* just added rail */
+/* just added */
 .rail{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;scrollbar-width:none}
 .rail::-webkit-scrollbar{display:none}
-.mini{flex:0 0 72%;max-width:300px;scroll-snap-align:start;text-decoration:none;color:inherit;background:var(--white);border-radius:18px;overflow:hidden;border:1px solid var(--line)}
+.mini{flex:0 0 72%;max-width:320px;scroll-snap-align:start;text-decoration:none;color:inherit;background:var(--white);border-radius:18px;overflow:hidden;border:1px solid var(--line)}
 .mini .ph{aspect-ratio:4/3}
 .mini .mb{padding:10px 14px 14px}
 .mini .new{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);font-weight:600}
@@ -69,25 +87,23 @@ h2 em{font-weight:600;font-style:italic;color:var(--raspberry)}
 .card h3{font-family:var(--display);font-weight:800;color:var(--wine);font-size:18px;line-height:1.15;margin:0}
 .card p{margin:0;font-size:13px;color:var(--muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .meta{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:12px;color:var(--ink);margin-top:4px}
-.meta span{font-variant-numeric:tabular-nums}
 .go{font-size:12.5px;font-weight:600;color:var(--raspberry);margin-top:2px}
 .empty{background:var(--cream-2);border:1px dashed var(--wine);border-radius:16px;padding:18px;text-align:center;color:var(--muted)}
-
 .ph{background:var(--wine) center/cover no-repeat;position:relative}
-.ph.none{background:repeating-linear-gradient(135deg,var(--wine) 0 14px,#5a0f15 14px 28px);display:grid;place-items:center}
-.ph.none span{color:var(--cream);font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-align:center;padding:8px}
+.ph.none{background:var(--wine);display:grid;place-items:center}
+.ph.none img{width:56px;height:56px;opacity:.9}
 
-/* cta */
-.cta{margin-top:30px;border-top:1.5px solid var(--wine);padding-top:18px;display:grid;gap:8px;font-size:13.5px;color:var(--muted)}
+/* footer */
+.cta{margin-top:34px;border-top:1.5px solid var(--wine);padding-block:18px 40px;display:grid;gap:8px;font-size:13.5px;color:var(--muted)}
 .cta a{font-weight:600;text-decoration:none}
 .sign{font-family:var(--display);font-style:italic;color:var(--wine);font-size:18px}
 
 /* recipe view */
-.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:6;display:flex;align-items:center;justify-content:space-between;gap:10px;padding-block:10px;background:var(--cream)}
+.top{position:sticky;top:0;z-index:6;display:flex;align-items:center;justify-content:space-between;gap:10px;padding-block:10px;background:var(--cream)}
 .back{display:inline-flex;align-items:center;gap:6px;background:var(--wine);color:var(--cream);border:0;border-radius:999px;padding:9px 16px;font:500 13.5px var(--body);text-decoration:none;cursor:pointer}
-.hero{border-radius:22px;overflow:hidden;aspect-ratio:9/8;max-width:100%}
+.hero{border-radius:22px;overflow:hidden;aspect-ratio:9/8;width:100%}
 .r-head{display:grid;gap:8px;margin-top:16px}
-.r-head h1{font-size:clamp(30px,9vw,40px)}
+.r-head h1{font-size:clamp(30px,5vw,44px)}
 .desc{margin:0;color:var(--ink)}
 .facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
 .fact{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:6px 12px;font-size:12.5px}
@@ -100,45 +116,88 @@ ul.chk,ol.chk{list-style:none;margin:0;padding:0}
 .chk li{border-bottom:1px solid var(--line)}
 .chk li:last-child{border-bottom:0}
 .chk label{display:grid;grid-template-columns:24px 1fr;gap:12px;align-items:start;padding:11px 0;cursor:pointer}
-.chk input{appearance:none;width:22px;height:22px;border:1.8px solid var(--wine);border-radius:7px;margin:1px 0 0;display:grid;place-items:center;background:var(--white);cursor:pointer}
+.chk input{appearance:none;-webkit-appearance:none;width:22px;height:22px;border:1.8px solid var(--wine);border-radius:7px;margin:1px 0 0;display:grid;place-items:center;background:var(--white);cursor:pointer}
 .chk input:checked{background:var(--wine)}
 .chk input:checked::after{content:"";width:10px;height:6px;border-left:2px solid var(--cream);border-bottom:2px solid var(--cream);transform:rotate(-45deg) translate(1px,-1px)}
 .chk input:checked + span{color:#9a8079;text-decoration:line-through;text-decoration-color:var(--raspberry)}
 .qty{font-weight:600;color:var(--wine)}
 .n{font-family:var(--display);font-weight:800;color:var(--raspberry);margin-right:6px}
+.shopln{display:inline-flex;align-items:center;gap:4px;margin-left:8px;padding:1px 10px;border-radius:999px;background:var(--cream);color:var(--raspberry);font-size:11.5px;font-weight:600;text-decoration:none;white-space:nowrap;vertical-align:1px}
+.shopln:hover{background:var(--raspberry);color:var(--white)}
 .tip{background:var(--wine);color:var(--cream);border-radius:20px;padding:16px 18px;margin-top:18px}
 .tip b{font-family:var(--display);font-style:italic;font-weight:600;font-size:18px;display:block;margin-bottom:4px}
+.tip a{color:var(--white);font-weight:600;white-space:nowrap}
+.shopbox{margin-top:18px;border:1.5px solid var(--wine);border-radius:20px;padding:14px 18px;display:grid;gap:8px}
+.shopbox b{font-family:var(--display);color:var(--wine);font-size:18px}
+.shopbox a{font-weight:600;text-decoration:none}
 .reset{background:none;border:0;color:var(--raspberry);font:500 12.5px var(--body);cursor:pointer;padding:6px 0;text-decoration:underline}
 .src{font-size:12px;color:var(--muted);margin-top:14px}
-@media (prefers-reduced-motion:no-preference){.card,.mini{transition:transform .15s ease}.card:active,.mini:active{transform:scale(.985)}}
-</style>
 
-<div class="proto" id="proto" hidden>PREVIEW · not launched yet · pending Lucy &amp; Angye approval</div>
+/* tablet */
+@media (min-width:720px){
+  .bar .wrap{min-height:72px}
+  .brand img{width:50px;height:50px}
+  .brand span{font-size:20px}
+  .mast{padding-block:44px 10px}
+  .rail{overflow:visible;display:grid;grid-template-columns:repeat(3,1fr)}
+  .mini{max-width:none}
+  .list{grid-template-columns:repeat(2,1fr);gap:18px}
+}
+/* desktop */
+@media (min-width:1040px){
+  .list{grid-template-columns:repeat(3,1fr)}
+  .card{grid-template-columns:1fr;grid-template-rows:auto 1fr;gap:0}
+  .card .ph{aspect-ratio:9/8;height:auto;min-height:0}
+  .card .cb{padding:14px 16px 16px}
+  .recipe{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:40px;align-items:start}
+  .recipe .left{position:sticky;top:64px}
+  .recipe .right > .box:first-child{margin-top:0}
+}
+@media (max-width:380px){.brand span{display:none}}
+@media (prefers-reduced-motion:no-preference){.card,.mini{transition:transform .15s ease,box-shadow .15s ease}.card:hover,.mini:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(103,18,24,.10)}.card:active,.mini:active{transform:scale(.985)}}
+</style>
+</head>
+<body>
+<div class="proto" id="proto" hidden>PREVIEW · not launched yet</div>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#" aria-label="The Sweet Natura Cookbook, home"><img src="logo.png" alt="Sweet Natura logo" width="44" height="44"><span>Sweet Natura</span></a>
+    <nav class="social" aria-label="Sweet Natura social media">
+      <a href="https://www.instagram.com/sweetnatura.health/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg></a>
+      <a href="https://www.tiktok.com/@sweetnatura.health" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v11.6a3.6 3.6 0 1 1-3.6-3.6"/><path d="M14 3c.4 2.6 2.4 4.6 5 4.8"/></svg></a>
+      <a href="https://www.youtube.com/channel/UCIzVsqDyKlnyVW6sxjVVQuA" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10.2 9.3v5.4l4.6-2.7z" fill="currentColor" stroke="none"/></svg></a>
+      <a href="https://wa.me/message/JZGSOPD5MDUYJ1" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M4 20.5l1.4-4.2A8.3 8.3 0 1 1 8.6 19.3z"/><path d="M9 8.6c.2-.4.6-.5.9-.3l.9.9c.2.2.2.6 0 .8l-.4.5c.5 1.1 1.4 2 2.5 2.5l.5-.4c.2-.2.6-.2.8 0l.9.9c.2.3.1.7-.3.9-.9.6-2 .6-3-.1a8 8 0 0 1-2.6-2.6c-.6-1-.7-2.1-.2-3.1z" fill="currentColor" stroke="none"/></svg></a>
+    </nav>
+  </div>
+</header>
 
 <main class="wrap" id="app"><p style="padding-top:40px;color:#6b4a44">Loading recipes…</p></main>
 
 <script>
 let RECIPES=[], ALL_CATS=[], byAdded=[], CONFIG={};
+const SHOP="https://sweetnaturahealth.com/?src=cookbook";
 const fmt=d=>new Date(d+"T12:00:00").toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"});
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const store={get(k){try{return JSON.parse(localStorage.getItem(k)||"null")}catch(e){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const withSrc=u=>u+(u.includes("?")?"&":"?")+"src=cookbook";
 let state={q:"",cat:null,scroll:0};
 const app=document.getElementById("app");
 
-function photo(r,cls){return r.img?`<div class="ph ${cls||""}" style="background-image:url('${r.img}')" role="img" aria-label="${esc(r.name)}"></div>`:`<div class="ph none ${cls||""}"><span>Photo coming<br>from Angye</span></div>`}
+function photo(r,cls){return r.img?`<div class="ph ${cls||""}" style="background-image:url('${r.img}')" role="img" aria-label="${esc(r.name)}"></div>`:`<div class="ph none ${cls||""}" role="img" aria-label="${esc(r.name)}"><img src="logo.png" alt=""></div>`}
 function ingCount(r){return r.ingredients.reduce((n,g)=>n+g.items.length,0)}
-function timeFact(r){const f=r.facts.find(f=>f[0]==="Prep");return f?`<span>⏱ ${esc(f[1])} prep</span>`:""}
+function timeFact(r){const f=r.facts.find(f=>f[0]==="Prep")||r.facts.find(f=>f[0]==="Cook / chill");return f?`<span>⏱ ${esc(f[1])}</span>`:""}
+const shopFor=(r,txt)=>(r.shop||[]).find(s=>txt.toLowerCase().includes(s.match.toLowerCase()));
 
 function renderHome(){
   const q=state.q.trim().toLowerCase();
   const hits=byAdded.filter(r=>(!state.cat||r.cats.includes(state.cat))&&(!q||[r.name,r.desc,...r.cats,...r.ingredients.flatMap(g=>g.items.map(i=>i[1]))].join(" ").toLowerCase().includes(q)));
   app.innerHTML=`
-  <header class="mast">
-    <div class="seal" aria-hidden="true">SN</div>
+  <div class="mast">
     <div class="kicker">Free recipes by Angye</div>
     <h1>The Sweet Natura <em>Cookbook</em></h1>
     <p class="welcome">Your favorite recipes, all in one place. Easy desserts and breakfasts from Angye, M.S. in Dietetics &amp; Nutrition. Save this link: new recipes land here as we post them.</p>
-  </header>
+  </div>
   <div class="search">
     <label class="field" for="q"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#671218" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
       <input id="q" type="search" placeholder="Search recipes or ingredients" value="${esc(state.q)}" autocomplete="off"></label>
@@ -150,47 +209,59 @@ function renderHome(){
   ${!q&&!state.cat?`<section><div class="sh"><h2>Just <em>added</em></h2></div>
     <div class="rail">${byAdded.slice(0,3).map(r=>`<a class="mini" href="#${r.slug}">${photo(r)}<div class="mb"><div class="new">Posted ${fmt(r.posted)}</div><h3>${esc(r.name)}</h3></div></a>`).join("")}</div></section>`:""}
   <section><div class="sh"><h2>${q||state.cat?"Results":"All <em>recipes</em>"}</h2><span class="count">${hits.length} recipe${hits.length===1?"":"s"}</span></div>
-    <div class="list">${hits.length?hits.map(r=>`<a class="card" href="#${r.slug}">${photo(r)}<div class="cb"><div class="cat">${esc(r.cats[0])}</div><h3>${esc(r.name)}</h3><p>${esc(r.desc)}</p><div class="meta">${timeFact(r)}<span>${ingCount(r)} ingredients</span></div><div class="go">View recipe →</div></div></a>`).join(""):`<div class="empty">No recipes match “${esc(state.q)}” yet. Try “chocolate” or “pumpkin”.</div>`}</div>
+    <div class="list">${hits.length?hits.map(r=>`<a class="card" href="#${r.slug}">${photo(r)}<div class="cb"><div class="cat">${esc(r.cats[0]||"")}</div><h3>${esc(r.name)}</h3>${r.desc?`<p>${esc(r.desc)}</p>`:""}<div class="meta">${timeFact(r)}<span>${ingCount(r)} ingredients</span></div><div class="go">View recipe →</div></div></a>`).join(""):`<div class="empty">No recipes match “${esc(state.q)}” yet. Try “chocolate” or “pumpkin”.</div>`}</div>
   </section>
-  <footer class="cta">
-    <div class="sign">Eat well. Feel good.</div>
-    <div>Recipes from <a href="https://www.instagram.com/sweetnatura.health/?src=cookbook" target="_blank" rel="noopener">@sweetnatura.health</a> on Instagram.</div>
-    <div>Craving something ready-made? <a href="https://sweetnaturahealth.com/?src=cookbook" target="_blank" rel="noopener">Order from sweetnaturahealth.com</a> · pickup or same-day delivery in Miami, UPS shipping outside Miami.</div>
-  </footer>`;
+  ${footer()}`;
   const inp=document.getElementById("q");
   inp.addEventListener("input",e=>{state.q=e.target.value;const pos=e.target.selectionStart;renderHome();const n=document.getElementById("q");n.focus();try{n.setSelectionRange(pos,pos)}catch(_){}} );
   app.querySelectorAll(".chip").forEach(b=>b.addEventListener("click",()=>{state.cat=b.dataset.cat||null;renderHome()}));
 }
 
+function footer(){return `<footer class="cta">
+    <div class="sign">Eat well. Feel good.</div>
+    <div>Recipes from <a href="https://www.instagram.com/sweetnatura.health/" target="_blank" rel="noopener">@sweetnatura.health</a>. Questions? <a href="https://wa.me/message/JZGSOPD5MDUYJ1" target="_blank" rel="noopener">Message us on WhatsApp</a>.</div>
+    <div>Craving something ready-made? <a href="${SHOP}" target="_blank" rel="noopener">Order from sweetnaturahealth.com</a> · pickup or same-day delivery in Miami, UPS shipping outside Miami.</div>
+  </footer>`}
+
 function renderRecipe(r){
   const key="sn-cb-"+r.slug; const done=new Set(store.get(key)||[]);
   let i=0;
-  const ing=r.ingredients.map(g=>`${g.group?`<div class="grp">${esc(g.group)}</div>`:""}<ul class="chk">${g.items.map(it=>{const id="i"+(i++);return `<li><label><input type="checkbox" id="${id}" data-k="${id}" ${done.has(id)?"checked":""}><span>${it[0]?`<span class="qty">${esc(it[0])}</span> `:""}${esc(it[1])}</span></label></li>`}).join("")}</ul>`).join("");
+  const ing=r.ingredients.map(g=>`${g.group?`<div class="grp">${esc(g.group)}</div>`:""}<ul class="chk">${g.items.map(it=>{const id="i"+(i++);const s=shopFor(r,it[1]);return `<li><label><input type="checkbox" id="${id}" data-k="${id}" ${done.has(id)?"checked":""}><span>${it[0]?`<span class="qty">${esc(it[0])}</span> `:""}${esc(it[1])}${s?`<a class="shopln" href="${esc(withSrc(s.url))}" target="_blank" rel="noopener" title="${esc(s.label)}">Shop ↗</a>`:""}</span></label></li>`}).join("")}</ul>`).join("");
   const steps=`<ol class="chk">${r.steps.map((s,j)=>{const id="s"+j;return `<li><label><input type="checkbox" id="${id}" data-k="${id}" ${done.has(id)?"checked":""}><span><span class="n">${j+1}</span>${esc(s)}</span></label></li>`}).join("")}</ol>`;
+  const tipShop=r.tip&&shopFor(r,r.tip);
+  const a=r.accent&&r.name.endsWith(r.accent)?r.accent:r.name.split(" ").slice(-1)[0];
   app.innerHTML=`
   <div class="top"><a class="back" href="#">← All recipes</a><span class="count">${esc(r.cats.join(" · "))}</span></div>
-  ${r.img?`<div class="ph hero" style="background-image:url('${r.img}')" role="img" aria-label="${esc(r.name)}"></div>`:`<div class="ph none hero"><span>Photo coming from Angye</span></div>`}
-  <div class="r-head">
-    <div class="kicker">Posted ${fmt(r.posted)}</div>
-    ${(()=>{const a=r.accent&&r.name.endsWith(r.accent)?r.accent:r.name.split(" ").slice(-1)[0];return `<h1>${esc(r.name.slice(0,r.name.length-a.length))}<em>${esc(a)}</em></h1>`})()}
-    <p class="desc">${esc(r.desc)}</p>
-    ${r.facts.length?`<div class="facts">${r.facts.map(f=>`<div class="fact"><b>${esc(f[0])}</b>${esc(f[1])}</div>`).join("")}</div>`:""}
+  <div class="recipe">
+    <div class="left">
+      ${photo(r,"hero")}
+      <div class="r-head">
+        <div class="kicker">Posted ${fmt(r.posted)}</div>
+        <h1>${esc(r.name.slice(0,r.name.length-a.length))}<em>${esc(a)}</em></h1>
+        ${r.desc?`<p class="desc">${esc(r.desc)}</p>`:""}
+        ${r.facts.length?`<div class="facts">${r.facts.map(f=>`<div class="fact"><b>${esc(f[0])}</b>${esc(f[1])}</div>`).join("")}</div>`:""}
+      </div>
+      <a class="reel" href="${esc(r.reel)}" target="_blank" rel="noopener">▶ Watch the reel on Instagram</a>
+    </div>
+    <div class="right">
+      <div class="box"><div class="sh"><h2>Ingredients</h2><button class="reset" type="button" data-reset>Clear checks</button></div>${ing}</div>
+      <div class="box"><h2>How to make it</h2>${steps}</div>
+      ${r.tip?`<div class="tip"><b>Angye's note</b>${esc(r.tip)}${tipShop?` <a href="${esc(withSrc(tipShop.url))}" target="_blank" rel="noopener">You can get it here →</a>`:""}</div>`:""}
+      ${(r.shop||[]).length?`<div class="shopbox"><b>From our shop</b>${r.shop.map(s=>`<a href="${esc(withSrc(s.url))}" target="_blank" rel="noopener">${esc(s.label)} →</a>`).join("")}</div>`:""}
+      <p class="src">Added to the cookbook ${fmt(r.added)}</p>
+    </div>
   </div>
-  <a class="reel" href="${r.reel}" target="_blank" rel="noopener">▶ Watch the reel on Instagram</a>
-  <div class="box"><div class="sh"><h2>Ingredients</h2><button class="reset" type="button" data-reset>Clear checks</button></div>${ing}</div>
-  <div class="box"><h2>How to make it</h2>${steps}</div>
-  ${r.tip?`<div class="tip"><b>Angye's note</b>${esc(r.tip)}</div>`:""}
-  <p class="src">Source: ${esc(r.source)} · Added to the cookbook ${fmt(r.added)}</p>
-  <footer class="cta"><div class="sign">Eat well. Feel good.</div><a href="#">← Back to all recipes</a></footer>`;
+  ${footer()}`;
   app.querySelectorAll("input[data-k]").forEach(c=>c.addEventListener("change",()=>{c.checked?done.add(c.dataset.k):done.delete(c.dataset.k);store.set(key,[...done])}));
+  app.querySelectorAll(".shopln").forEach(l=>l.addEventListener("click",e=>e.stopPropagation()));
   app.querySelector("[data-reset]").addEventListener("click",()=>{done.clear();store.set(key,[]);app.querySelectorAll("input[data-k]").forEach(c=>c.checked=false)});
 }
 
 function route(){
   const slug=location.hash.replace("#","");
   const r=RECIPES.find(x=>x.slug===slug);
-  if(r){state.scroll=window.scrollY;renderRecipe(r);window.scrollTo(0,0)}
-  else{renderHome();window.scrollTo(0,state.scroll||0)}
+  if(r){state.scroll=window.scrollY;renderRecipe(r);document.title=r.name+" · The Sweet Natura Cookbook";window.scrollTo(0,0)}
+  else{renderHome();document.title="The Sweet Natura Cookbook";window.scrollTo(0,state.scroll||0)}
 }
 window.addEventListener("hashchange",route);
 fetch("recipes.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(d=>{
@@ -201,3 +272,5 @@ fetch("recipes.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error(r.sta
   route();
 }).catch(()=>{app.innerHTML='<div class="empty" style="margin-top:40px">The recipes could not load. Please refresh the page in a moment.</div>'});
 </script>
+</body>
+</html>
