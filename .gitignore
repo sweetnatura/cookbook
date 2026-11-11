@@ -1,0 +1,3 @@
+dist/
+publish-queue.json
+node_modules/
