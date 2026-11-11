@@ -110,7 +110,7 @@ for (const page of await rows()) {
 
 await copyFile("site/index.html", `${OUT}/index.html`);
 let hasAngye = true;
-await copyFile("site/angye-cutout.webp", `${OUT}/angye-cutout.webp`).catch(() => { hasAngye = false; });
+for (const f of ["angye-hi.webp", "angye-chef.webp"]) await copyFile(`site/${f}`, `${OUT}/${f}`).catch(() => { hasAngye = false; });
 for (const f of ["logo.png", "favicon.png"]) await copyFile(`site/${f}`, `${OUT}/${f}`).catch(() => warnings.push(`Missing site/${f}`));
 await writeFile(`${OUT}/recipes.json`, JSON.stringify({ config: { preview: PREVIEW, angye: hasAngye, built: new Date().toISOString() }, recipes }, null, 1));
 await writeFile(`${OUT}/.nojekyll`, "");
